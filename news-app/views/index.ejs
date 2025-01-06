@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News App</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-neutral-50 text-black font-serif">
+    <div class="mx-14 min-w-screen min-h-screen mt-5">
+
+
+      <!-- Header -->
+      <header>
+        <div class="flex justify-between items-center">
+          <img src="/images/news-logo.png" alt="logo" class="w-24" />
+          <h1 class="text-5xl font-extrabold pl-20"><a href="/">News Daily</a></h1>
+          <p class="text-sm font-semibold text-black"><%= currentDate %></p>
+        </div>
+        <hr class="mt-2 h-0.5 bg-black rounded" />
+        <hr class="mb-2 h-0.5 bg-black rounded" />
+        <div>
+          <ul class="flex justify-between items-center space-x-5">
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/world">World</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/technology">Technology</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/business">Business</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/culture">Culture</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/politics">Politics</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/science">Science</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/health">Health</a>
+            </li>
+            <li class="hover:cursor-pointer hover:font-bold">
+              <a href="/travel">Travel</a>
+            </li>
+          </ul>
+        </div>
+        <hr class="mt-2 h-0.5 bg-black rounded" />
+        <hr class="mb-2 h-0.5 bg-black rounded" />
+      </header>
+
+
+
+      <!-- Main Content -->
+      <main>
+        <h1 class="flex text-5xl content-center justify-center py-10">
+          <%= type %> News
+        </h1>
+        <% for (let i = 0; i < articles.length; i += 3) { %>
+            <% if (articles[0+i].image==="None"){ %>
+        <div class="bg-neutral-300 rounded-lg mx-2 flex shadow-lg">
+          <div class="content-center p-5">
+            <h1 class="text-4xl"><%= articles[0+i].title %></h1>
+            <p class="mt-4"><%= articles[0+i].description %></p>
+            <a
+              class="text-blue-500 my-7"
+              href="https://www.scmp.com/news/china/politics/article/3027994/us-house-speaker-nancy-pelosi-backs-congressional-legislation"
+              >Read More...</a
+            >
+          </div>
+        </div>
+        <% }else{ %>
+            <div class="bg-neutral-300 rounded-lg mx-2 flex shadow-lg">
+          <div class="content-center w-3/5 p-5">
+            <h1 class="text-4xl"><%= articles[0+i].title %></h1>
+            <p class="mt-4"><%= articles[0+i].description %></p>
+            <a
+              class="text-blue-500 my-7"
+              href="https://www.scmp.com/news/china/politics/article/3027994/us-house-speaker-nancy-pelosi-backs-congressional-legislation"
+              >Read More...</a
+            >
+          </div>
+          <div class="content-center w-2/5">
+            <img
+              src="<%= articles[0+i].image %>"
+              alt="image"
+              class="w-full h-full object-cover rounded-r-lg"
+            />
+          </div>
+        </div>
+            <% } %>
+        <div class="flex flex-col md:flex-row gap-4 py-6 px-2">
+
+
+
+          <!-- Card 1 -->
+          <% if (articles[1+i].image==="None"){ %>
+          <div class="flex shadow-lg rounded-lg overflow-hidden">
+            <div class="flex-1 p-6">
+              <h2 class="text-2xl font-bold mb-2">
+                <%= articles[1+i].title %>
+              </h2>
+              <p class=""><%= articles[1+i].description %></p>
+              <a
+                href="#"
+                class="text-blue-500 font-medium mt-4 inline-flex items-center"
+              >
+                Read More...
+                <svg
+                  class="ml-1 w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="bg-neutral-300 flex items-center justify-center"></div>
+            <% } else{%>
+            <div class="flex shadow-lg rounded-lg overflow-hidden">
+              <div class="flex-1 p-6">
+                <h2 class="text-2xl font-bold mb-2">
+                  <%= articles[1+i].title %>
+                </h2>
+                <p class=""><%= articles[1+i].description %></p>
+                <a
+                  href="#"
+                  class="text-blue-500 font-medium mt-4 inline-flex items-center"
+                >
+                  Read More...
+                </a>
+              </div>
+              <div class="w-1/3 bg-neutral-300 flex items-center justify-center">
+                <img
+                  src="<%= articles[1+i].image %>"
+                  alt=""
+                  class="w-full h-full object-cover rounded-r-lg"
+                />
+              </div>
+              <% } %>
+          </div>
+
+
+
+          <!-- Card 2 -->
+          <% if (articles[2+i].image==="None"){ %>
+          <div class="flex shadow-lg rounded-lg overflow-hidden">
+            <div class="flex-1 p-6">
+              <h2 class="text-2xl font-bold mb-2">
+                <%= articles[2+i].title %>
+              </h2>
+              <p class=""><%= articles[2+i].description %></p>
+              <a
+                href="#"
+                class="text-blue-500 font-medium mt-4 inline-flex items-center"
+              >
+                Read More...
+                </svg>
+              </a>
+            </div>
+            <div class="bg-neutral-300 flex items-center justify-center"></div>
+            <% } else{%>
+            <div class="flex shadow-lg rounded-lg overflow-hidden">
+              <div class="flex-1 p-6">
+                <h2 class="text-2xl font-bold mb-2">
+                  <%= articles[2+i].title %>
+                </h2>
+                <p class=""><%= articles[2+i].description %></p>
+                <a
+                  href="#"
+                  class="text-blue-500 font-medium mt-4 inline-flex items-center"
+                >
+                  Read More...
+                </a>
+              </div>
+              <div class="w-1/3 bg-neutral-300 flex items-center justify-center">
+                <img
+                  src="<%= articles[2+i].image %>"
+                  alt=""
+                  class="w-full h-full object-cover rounded-r-lg"
+                />
+              </div>
+              <% } %>
+          </div>
+        </div>
+        <% } %>
+      </main>
+ <!-- Footer -->
+<footer class="bg-neutral-50 text-black font-serif py-10 bottom-0 left-0 w-full">
+  <div class="container mx-auto text-center">
+    <!-- Social Media Icons -->
+    <div class="flex justify-center space-x-6 -mt-4">
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        class="hover:text-blue-500"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+        <!-- Replace with actual icons -->
+        Facebook
+      </a>
+      <a href="https://twitter.com" target="_blank" class="hover:text-blue-400">
+        Twitter
+      </a>
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        class="hover:text-pink-400"
+      >
+        Instagram
+      </a>
+      <a
+        href="https://linkedin.com"
+        target="_blank"
+        class="hover:text-blue-600"
+      >
+        LinkedIn
+      </a>
+    </div>
+
+    <!-- Footer Text -->
+    <p class="mt-1 text-sm">A project by Shrey Sethi.</p>
+    <p class="text-sm -mb-8">© 2024 News Daily. All rights reserved.</p>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>
